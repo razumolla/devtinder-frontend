@@ -1,14 +1,19 @@
-import Navbar from "./components/Navbar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Body from "./Body";
+import Login from "./Login";
+import Profile from "./Profile";
 
 function App() {
   return (
     <>
-      <Navbar />
-
-      <div data-theme="dark">
-        This div will always use light theme
-        <span data-theme="retro">This span will always use retro theme!</span>
-      </div>
+      <BrowserRouter basename="/">
+        <Routes>
+          <Route path="/" element={<Body />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
