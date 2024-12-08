@@ -1,22 +1,30 @@
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constant";
 
 const Login = () => {
   const [emailId, setEmailId] = useState("santo@gmail.com");
   const [password, setPassword] = useState("Razu@12345");
+  const dispatch = useDispatch();
+
+  // use navigate to redirect user to the feed page
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/login",
+        BASE_URL + "/login",
         {
           emailId,
           password,
         },
         { withCredentials: true }
       );
-
-      console.log(res);
+      dispatch(addUser(res.data));
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
