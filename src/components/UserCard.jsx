@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const UserCard = ({ user }) => {
   const { firstName, lastName, photoUrl, about, gender, age, skills } = user;
   console.log("user", user);
@@ -5,7 +6,7 @@ const UserCard = ({ user }) => {
     <div>
       <div className="card card-compact bg-base-300 w-96 shadow-xl">
         <figure>
-          <img src={user?.photoUrl} alt="Shoes" />
+          <img src={photoUrl} alt="Photo of user" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{firstName + " " + lastName}</h2>
