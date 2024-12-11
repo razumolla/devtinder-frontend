@@ -8,10 +8,9 @@ import { BASE_URL } from "../utils/constant";
 const Login = () => {
   const [emailId, setEmailId] = useState("santo@gmail.com");
   const [password, setPassword] = useState("Razu@12345");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
-
-  // use navigate to redirect user to the feed page
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // use navigate to redirect user to the feed page
 
   const handleSubmit = async () => {
     try {
@@ -26,7 +25,7 @@ const Login = () => {
       dispatch(addUser(res.data));
       navigate("/");
     } catch (error) {
-      console.log(error);
+      setError(error?.response?.data || "Something went wrong");
     }
   };
 
@@ -53,7 +52,7 @@ const Login = () => {
                 <span className="label-text">Password </span>
               </div>
               <input
-                type="password"
+                type="text"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter Your Password"
@@ -61,7 +60,7 @@ const Login = () => {
               />
             </label>
           </div>
-
+          <p className="text-red-600">{error}</p>
           <div className="card-actions justify-end">
             <button className="btn btn-primary" onClick={handleSubmit}>
               Login
