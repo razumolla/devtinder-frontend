@@ -35,9 +35,15 @@
 - build the user card on feed
 - Edit Profile Feature
 - Show Toast Message on save of profile
+
+# Episode-18 | DevTinder UI - Part 4
+
 - New Page - See all my connections
 - New Page - See all my Conenction REquests
 - Feature - Accept/Reject connection request
+
+# Episode-19 | DevTinder UI - Part 5
+
 - Send/Ignore the user card from the feed
 - Signup New User
 - E2E testing
