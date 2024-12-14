@@ -1,12 +1,28 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
-import { addRequest } from "../utils/requestSlice";
+import { addRequest, removeRequest } from "../utils/requestSlice";
 import { useEffect } from "react";
 
 const Requests = () => {
   const dispatch = useDispatch();
   const requests = useSelector((store) => store.requests);
+
+  // - POST /request/review/:status/:requestId //=> status: accepted, rejected
+  const reviewRequest = async (status, requestId) => {
+    try {
+      await axios.post(
+        BASE_URL + `/request/review/${status}/${requestId}`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      dispatch(removeRequest(requestId));
+    } catch (error) {
+      console.log(error.response?.data || error.message);
+    }
+  };
 
   const fetchRequests = async () => {
     try {
@@ -30,7 +46,7 @@ const Requests = () => {
 
   return (
     <div className="text-center my-10">
-      <h1 className="text-bold text-white text-3xl">Requests</h1>
+      <h1 className="text-bold text-white text-3xl">Connection Requests</h1>
 
       {requests.map((request) => {
         const { _id, firstName, lastName, photoUrl, age, gender, about } =
@@ -56,8 +72,19 @@ const Requests = () => {
               <p>{about}</p>
             </div>
             <div>
-              <button className="btn btn-primary mx-2">Accept</button>
-              <button className="btn btn-error">Reject</button>
+              <button
+                className="btn btn-primary mx-2 "
+                onClick={() => reviewRequest("accepted", request._id)}
+              >
+                Accept
+              </button>
+
+              <button
+                className="btn btn-error"
+                onClick={() => reviewRequest("rejected", request._id)}
+              >
+                Reject
+              </button>
             </div>
           </div>
         );
