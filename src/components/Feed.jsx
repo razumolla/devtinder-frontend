@@ -7,7 +7,7 @@ import UserCard from "./UserCard";
 
 const Feed = () => {
   const dispatch = useDispatch();
-  const feed = useSelector((state) => state.feed); // after dispatch now we can get data from store
+  const feed = useSelector((state) => state.feed);
 
   const getFeed = async () => {
     if (feed) return;
@@ -20,19 +20,26 @@ const Feed = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getFeed();
   }, []);
 
   if (!feed) return;
-  if (feed.length === 0) return <h1> No New Users Found</h1>;
+  if (feed.length === 0)
+    return (
+      <h1 className="text-center text-white text-2xl">No New Users Found</h1>
+    );
 
   return (
-    feed && (
-      <div className="flex justify-center my-10">
-        <UserCard user={feed[0]} />
+    <div className="flex flex-col items-center my-10 px-4">
+      <h1 className="text-3xl font-bold text-white mb-6">User Feed</h1>
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {feed.map((user, index) => (
+          <UserCard key={index} user={user} />
+        ))}
       </div>
-    )
+    </div>
   );
 };
 
