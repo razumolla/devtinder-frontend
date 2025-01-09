@@ -8,8 +8,8 @@ import { BASE_URL } from "../utils/constant";
 const Login = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [emailId, setEmailId] = useState("@gmail.com");
-  const [password, setPassword] = useState("@1234");
+  const [emailId, setEmailId] = useState("razu@gmail.com");
+  const [password, setPassword] = useState("Razu@12345");
   const [isLoginFrom, setIsLoginFrom] = useState(true);
 
   const [error, setError] = useState("");
