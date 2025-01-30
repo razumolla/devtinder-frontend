@@ -144,7 +144,7 @@
     - Explore queue mechanim to send bulk emails
     - Amazon SES Bulk Emails
     - Make sendEmail function dynamic
-    - bee-queue & bull npm packages
+    - bee-queue(better than bull) & bull npm packages [alternative of node-crons]
 
 # Razorpay Payment Gateway Inegration
 
