@@ -176,8 +176,12 @@
     - Listen to events
     - Homework: improve the UI
     - Homework: Fix Security Bug - auth in web ockets
+
     - Homework: Fix bug - If I'm not fried, then I should not be able to send message
-    - Homework: feat: Show Green Symbol when online???? - [last Seen 2 hours ago]
+    - Homework: feat: Show Green Symbol when online???? - [last Seen 2 hours ago] // after join the room , track the data
+    - make: auto scrill to last msg
     - Homework: Limit messages when fetching from DB
     - Project Ideas: Tic tac toe game
     - Project Idea 2 : Chess
+    -
+    - if you want to do thing msg fast- using redis
