@@ -34,10 +34,11 @@ const Body = () => {
   }, []);
 
   return (
-    <div>
+    <div className="w-full mx-auto min-h-screen bg-[#d9dbe7]">
       <Navbar />
-      <Outlet />
-      <Footer />
+      <div className="pt-10 max-w-[1280px] mx-auto border border-red-500  ">
+        <Outlet />
+      </div>
     </div>
   );
 };

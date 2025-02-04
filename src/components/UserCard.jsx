@@ -24,7 +24,7 @@ const UserCard = ({ user }) => {
   };
 
   return (
-    <div className="bg-gray-800 text-white rounded-lg shadow-lg p-4 flex flex-col items-center">
+    <div className="bg-gray-600 text-white rounded-lg shadow-lg  flex flex-col items-center">
       <img
         src={photoUrl}
         alt="User"
