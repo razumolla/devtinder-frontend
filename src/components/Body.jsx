@@ -33,9 +33,9 @@ const Body = () => {
   }, []);
 
   return (
-    <div className="w-full mx-auto min-h-screen bg-[#f5f8fa]">
+    <div className="w-full bg-[#f5f8fa]">
       <Navbar />
-      <div className="mt-16 max-w-[1080px] mx-auto border border-red-600">
+      <div className="mt-16 max-w-[1080px] mx-auto min-h-screen  bg-[#dbf8f3] rounded-lg  "> 
         <Outlet />
       </div>
     </div>

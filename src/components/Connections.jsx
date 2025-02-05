@@ -25,23 +25,33 @@ const Connections = () => {
     fetchConnections();
   }, []);
 
+  // Automatically select the first connection when available
+  useEffect(() => {
+    if (!selectedUser && connections && connections.length > 0) {
+      setSelectedUser(connections[0]);
+    }
+  }, [connections, selectedUser]);
+
   if (!connections) return null;
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen bg-[#f5f8fa]">
       {/* Left Side - Connections List */}
-      <div className="w-1/3 bg-gray-800 p-4 overflow-auto">
-        <h1 className="text-bold text-white text-2xl mb-4">Connections</h1>
+      <div className="w-1/3 bg-white p-4 overflow-auto border-r border-gray-300">
+        <h1 className="font-bold text-gray-800 text-2xl mb-4">Connections</h1>
 
         {connections.length === 0 ? (
-          <h2 className="text-white">No Connections Found</h2>
+          <h2 className="text-gray-800">No Connections Found</h2>
         ) : (
           connections.map((connection) => {
             const { _id, firstName, lastName, photoUrl } = connection;
+            const isSelected = selectedUser && selectedUser._id === _id;
             return (
               <div
                 key={_id}
-                className="flex items-center p-3 cursor-pointer bg-gray-700 rounded-lg mb-2 hover:bg-gray-600"
+                className={`flex items-center p-3 cursor-pointer rounded-lg mb-2 border border-gray-200 hover:bg-gray-100 ${
+                  isSelected ? "bg-blue-100" : "bg-white"
+                }`}
                 onClick={() => setSelectedUser(connection)}
               >
                 <img
@@ -49,8 +59,8 @@ const Connections = () => {
                   className="w-12 h-12 rounded-full object-cover"
                   src={photoUrl}
                 />
-                <div className="ml-3 text-white">
-                  <h2 className="font-bold">{firstName + " " + lastName}</h2>
+                <div className="ml-3 text-gray-800">
+                  <h2 className="font-bold">{`${firstName} ${lastName}`}</h2>
                 </div>
               </div>
             );
@@ -59,11 +69,11 @@ const Connections = () => {
       </div>
 
       {/* Right Side - Chat Box */}
-      <div className="w-2/3 bg-gray-900">
+      <div className="w-2/3 bg-white">
         {selectedUser ? (
           <Chat targetUser={selectedUser} />
         ) : (
-          <div className="flex items-center justify-center h-full text-white">
+          <div className="flex items-center justify-center h-full text-gray-800">
             <h2>Select a user to start chatting</h2>
           </div>
         )}
