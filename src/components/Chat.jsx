@@ -39,6 +39,7 @@ const Chat = ({ targetUser }) => {
     if (!userId || !targetUserId) return;
 
     const socket = CreateSocketConnection();
+    // As soon as the page loaded, the socket connection is made and joinChat event is emitted
     socket.emit("joinChat", {
       firstName: user.firstName,
       userId,
@@ -66,10 +67,6 @@ const Chat = ({ targetUser }) => {
       text: newMessage,
     });
 
-    setMessages((messages) => [
-      ...messages,
-      { firstName: user.firstName, lastName: user.lastName, text: newMessage },
-    ]);
     setNewMessage("");
   };
 
