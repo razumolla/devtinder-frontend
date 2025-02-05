@@ -28,12 +28,11 @@ const Feed = () => {
   if (!feed) return;
   if (feed.length === 0)
     return (
-      <h1 className="text-center text-white text-2xl">No New Users Found</h1>
+      <h1 className="text-center text-black text-2xl">No New Users Found</h1>
     );
 
   return (
     <div className="flex flex-col items-center my-10 px-4">
-      <h1 className="text-3xl font-bold text-white mb-6">User Feed</h1>
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {feed.map((user, index) => (
           <UserCard key={index} user={user} />

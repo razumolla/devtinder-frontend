@@ -24,7 +24,7 @@ const Login = () => {
         { withCredentials: true }
       );
       dispatch(addUser(res.data));
-      return navigate("/");
+      return navigate("/feed");
     } catch (error) {
       setError(error?.response?.data || "Something went wrong");
     }

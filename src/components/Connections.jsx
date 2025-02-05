@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnection } from "../utils/connectionSlice";
 import { Link } from "react-router-dom";
+import Chat from "./Chat";
 
 const Connections = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const Connections = () => {
   if (connections.length === 0) return <h1> No Connections Found</h1>;
 
   return (
-    <div className="text-center my-10">
+    <div className="text-center ">
       <h1 className="text-bold text-white text-3xl">Connections</h1>
 
       {connections.map((connection) => {
@@ -62,6 +63,10 @@ const Connections = () => {
           </div>
         );
       })}
+
+      <div>
+        <Chat />
+      </div>
     </div>
   );
 };
